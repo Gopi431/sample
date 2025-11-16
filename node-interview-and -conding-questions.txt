@@ -1,0 +1,1612 @@
+==============================================
+Rotate Array by K Steps
+
+Example: [1,2,3,4,5,6,7], k = 3 → [5,6,7,1,2,3,4].
+
+let nums=[1,2,3,4,5,6,7];
+
+let k=3;
+
+let m=nums.length;
+
+k=k%m;
+
+let n=m-k;
+
+let result=nums.slice(n).concat(nums.slice(0,n-1));
+
+
+console.log(result);
+
+=====================================================
+
+Count Pairs with Given Sum
+
+Given an array and a sum, find the count of pairs that equal the sum.
+Example: [1, 5, 7, -1, 5], sum = 6 → 3.
+
+for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+        if (nums[i] + nums[j] === sum) {
+            resultArray = [nums[i], nums[j]];
+            break;
+        }
+    }
+    if (resultArray.length > 0) break;
+}
+
+==================================================
+Find the element that appears more than n/2 times.
+Example: [3,3,4,2,3,3,5] → 3.
+
+for(let num of nums){
+    let duplicateValue=nums.filter(numObject=>numObject==num);
+     if(duplicateValue.length>1 &&duplicateValue.length>numberOfAppear ){
+         maxNumber=num;
+         numberOfAppear=duplicateValue.length;
+     }
+}
+
+=================================================
+
+Given a string, compress it by replacing consecutive repeating characters with the character followed by the count.
+Example: "aaabbc" → "a3b2c1".
+
+  let string = "aaabbc";
+
+  let char = string.split("");
+
+  let resultString = "";
+
+  let duplicateCharCheck = [];
+
+  for (let i = 0; i < char.length; i++) {
+    if (!duplicateCharCheck.includes(char[i])) {
+      let result = char.filter((charObject) => charObject == char[i]);
+      let value = result.length;
+      resultString = resultString + char[i] + value;
+      duplicateCharCheck.push(char[i]);
+    }
+  }
+
+  ===========================================
+
+ Given an array of integers from 1 to N, one number is missing. Find the missing number.
+Example: [1, 2, 4, 5] → 3.
+
+  let missingValues=[]
+
+
+for(let i=0;i<input.length-1;i++){
+    let currentValue=input[i];
+    let nextOrderValue=input[i+1];
+
+    if(currentValue+1 !== nextOrderValue){
+       missingValues.push(currentValue+1)
+    }
+}
+
+======================================
+Given a number, repeatedly sum its digits until a single-digit result is obtained.
+Example: 9875 → 2 (9+8+7+5=29, 2+9=11, 1+1=2).
+
+app.get("/", (req, res) => {
+  let input = 9875;
+  let data = sumOfResult(input);
+  res.send(`The result string is: ${data}`);
+});
+
+function sumOfResult(input) {
+  input = input.toString();
+  let splitInput = input.split("");
+  if (input.length == 1) {
+    return parseInt(input);
+  }
+
+  let sum = 0;
+  for (let i = 0; i < splitInput.length; i++) {
+    sum += parseInt(splitInput[i]);
+  }
+
+  return sumOfResult(sum);
+}
+
+==========================================
+Balanced Parentheses
+
+Check if a string containing {, }, [, ], (, ) is balanced.
+Example: "([]{})" → true, "([)]" → false.
+
+  let input = "([]{})";
+  let input2 = "({])";
+  let map = { "}": "{", ")": "(", "]": "[" };
+  let stack = [];
+  let result = true;
+  for (let i = 0; i < input.length; i++) {
+    if (["(", "{", "["].includes(input[i])) {
+      stack.push(input[i]);
+    } else if (map[input[i]] && stack.pop() !== map[input[i]] && stack.pop()) {
+      result = false;
+      break;
+    }
+  }
+
+=======================================
+ Anagram Check
+
+Check if two strings are anagrams of each other.
+Example: "listen", "silent" → true.
+
+et input1="listen"
+let input2="silent"
+
+let result=false;
+
+if(input1.length!=input2.length){
+    return result;
+}
+let sortedInput1=input1.split("").sort().join();
+let sortedInput2=input2.split("").sort().join();
+
+if(sortedInput1==sortedInput2){
+    result=true;
+}
+
+=============================================
+Find the First Non-Repeating Character
+
+Example: "swiss" → 'w'.
+
+let input="swiss"
+let splitInput=input.split("");
+
+let resultChar;
+for(let char of input){
+let duplicateStringCheck=splitInput.filter(splitInputObject=>splitInputObject==char);
+
+    if(duplicateStringCheck.length==1){
+        resultChar=char;
+        break
+    }
+
+}
+
+====================================================
+
+. Reverse a String
+
+let input="swiss"
+
+let resultChar=input.split("").reverse().join("")
+
+===================================================
+
+
+Palindrome Check
+
+
+let input="madam"
+
+let reverseInput=input.split("").reverse().join("")
+
+let result=false;
+
+if(reverseInput==input){
+    result=true;
+}
+
+===================================================
+
+Array Sum
+
+  let arr = [1, 2, 3, 4, 5];
+  let result = arr.reduce((sum, num) => sum + num, 0);
+
+  =============================================
+
+ Longest Word in Sentence
+function longestWord(sentence) {
+  if (typeof sentence !== 'string') return '';
+  return sentence
+    .split(/\s+/)
+    .reduce((longest, word) => word.length > longest.length ? word : longest, '');
+}
+
+console.log(longestWord("EPAM is amazing")); // "amazing"
+
+========================
+
+Count Vowels in String
+
+function countVowels(str) {
+  if (typeof str !== 'string') return 0;
+  return (str.match(/[aeiou]/gi) || []).length;
+}
+
+console.log(countVowels("epam")); // 2
+
+
+Note::::we can write our own lognc char includes with ["a","e","i","o","u"]
+
+====================================
+3. Factorial
+
+let n=5; ---->1x2x3x4x5=120
+let result=1;
+for(let i=1;i<=n;i++){
+   result =result*i
+}
+console.log(result);
+
+====================================================
+
+Fibonacci Sequence
+
+a series of numbers where each number is the sum of the two preceding ones, usually starting with 0 and 1. So, the sequence begins 0, 1, 1, 2, 3, 5, 8, 13, and so on
+
+function fibonacci(n) {
+  if (n <= 0) return [];
+  if (n === 1) return [0];
+  let seq = [0, 1];
+  for (let i = 2; i < n; i++) {
+    seq.push(seq[i - 1] + seq[i - 2]);
+  }
+  return seq;
+}
+
+console.log(fibonacci(7)); // [0,1,1,2,3,5,8]
+
+=======================================
+
+find zeros in array and move to end of the array
+
+let ar=[0, 0,1, 4, 3, 0, 0]
+let instertPosition=0;
+for(let i=0;i<ar.length;i++){
+    if(ar[i]!=0){
+        ar[instertPosition]=ar[i];
+        instertPosition++;
+    }
+}
+while(instertPosition<ar.length){
+    ar[instertPosition]=0;
+    instertPosition++
+}
+
+==========================================
+let str = 'hihello';
+//expected result {h:2, i:1, e:1, l:2,o:1}
+let result={}
+let splitArr=str.split("")
+for(let i=0;i<str.length;i++){
+    let stringCount=splitArr.filter(strObject=>strObject==str[i]);
+    result[str[i]]=stringCount.length;
+}
+console.log(result);
+
+=====================================================
+
+
+=================================================
+Promise-based File Processing
+
+Problem:
+You have a folder with multiple JSON files.
+Read all files asynchronously, merge their contents into a single array, and write it into a new output.json.
+
+
+async function(){
+    let folderPath=""
+    let readFolder=await fs.readdir(folderPath);
+    let files=await readFolder.filter(fs=>fs.endsWith('.json'));
+    let allFiles=await Promise.all(files.map(file=>{
+        let readFile=fs.readFile(file);
+        return readFile;
+    }));
+    let mergeFile=allFiles.flat();
+    let data=fs.writeFile(mergeFile);
+}
+================================================
+
+Rate Limiter Middleware
+
+Problem:
+Create an Express middleware that limits each IP to 100 requests per 15 minutes.
+
+let rateLimiter = require("express-rate-limiter");
+let limitter = rateLimiter({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: "Too many requests from this IP, please try again later. ",
+});
+
+====================================================
+
+Build a WebSocket server that:
+
+Accepts client connections
+
+Broadcasts a received message to all connected clients except the sender
+
+
+const WebSocket = require("ws");
+
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on("connection", ws => {
+  ws.on("message", message => {
+    wss.clients.forEach(client => {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(message.toString());
+      }
+    });
+  });
+});
+
+console.log("WebSocket server running on ws://localhost:8080");
+
+=======================================================
+
+. Async/Parallel API Calls
+
+Problem:
+Given an array of 10 URLs, fetch them in parallel, but limit concurrency to 3 at a time.
+
+const fetch = require("node-fetch");
+
+const urls = [
+  "https://jsonplaceholder.typicode.com/posts/1",
+  "https://jsonplaceholder.typicode.com/posts/2",
+  "https://jsonplaceholder.typicode.com/posts/3",
+  "https://jsonplaceholder.typicode.com/posts/4",
+  "https://jsonplaceholder.typicode.com/posts/5",
+  "https://jsonplaceholder.typicode.com/posts/6",
+  "https://jsonplaceholder.typicode.com/posts/7",
+  "https://jsonplaceholder.typicode.com/posts/8",
+  "https://jsonplaceholder.typicode.com/posts/9",
+  "https://jsonplaceholder.typicode.com/posts/10"
+];
+
+async function fetchInBatches(urls, limit) {
+  const results = [];
+
+  for (let i = 0; i < urls.length; i += limit) {
+    const batch = urls.slice(i, i + limit); // Take up to `limit` URLs
+    console.log(`Fetching batch: ${batch.join(", ")}`);
+
+    const batchResults = await Promise.all(
+      batch.map(async (url) => {
+        try {
+          const res = await fetch(url);
+          return await res.json();
+        } catch (err) {
+          return { error: err.message };
+        }
+      })
+    );
+
+    results.push(...batchResults); // Append batch results
+  }
+
+  return results;
+}
+
+fetchInBatches(urls, 3).then((data) => {
+  console.log("\nAll done! Results length:", data.length);
+});
+
+=====> second method
+
+function parallelCalls(url,limit){
+    let result=[]
+    for(let i=0;i<url.length;i+=limit){
+
+        let batch=url.slice(i,i+limit);
+        let urlData=await promise.all(batch.map(batchUrl=>{
+            let data=axios.get(batchUrl);
+            return data;
+        }));
+        urlData=urlData.flat();
+       result=[...result,...urlData]
+    }
+    return result;
+}
+======================================================
+
+
+Retry Logic for API Call
+
+Problem:
+Write a function fetchWithRetry(url, retries, delay) that retries a failed fetch request up to retries times, waiting delay ms between attempts.
+
+const fetch = require("node-fetch");
+
+async function fetchWithRetry(url, retries = 3, delay = 1000) {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.json();
+    } catch (err) {
+      if (i === retries) throw err;
+      await new Promise(res => setTimeout(res, delay));
+    }
+  }
+}
+
+fetchWithRetry("https://api.github.com/users/octocat")
+  .then(console.log)
+  .catch(console.error);
+
+
+  ==============================
+
+ sconst {=require("worker");
+
+  // worker client service
+const {Worker}=require("worker_threads");
+
+const worker=new Worker();
+let input={};
+worker.postMessage(input);
+worker.on("message",(data)=>{
+
+})
+
+worker.on("error",(error)=>{
+
+})
+
+worker.on("exit",()=>{
+
+})
+
+console.log("Try programiz.pro");
+
+// worker service
+const {parentPort}=require("worker_threads");
+
+
+parentPort.on("message",(data)=>{
+    try{
+        let result="data"
+        parentPort.postMessage(result)
+    }
+    catch(){
+
+    }
+})
+
+worker.on("exit",()=>{
+
+})
+
+==========================
+let input=[1,2,3];
+// ====>expected output using recursive function
+// [
+// [],
+// [1],
+// [2],
+// [3],
+// [1,2],
+// [2,3],
+// [3,1],
+// [1,2,3]
+// ]
+function getNonDuplicateData(ar){
+    let result=[[]];
+
+    function helper(start,end){
+        if(end>ar.length) return;
+        result.push(ar.slice(start,end))
+        helper(start,end+1);
+    }
+
+    for(let i=0;i<ar.length;i++){
+        helper(i,i+1)
+    }
+
+    return result;
+}
+
+console.log(getNonDuplicateData(input));
+
+============================================
+
+//deepclone concept
+
+
+// Online Javascript Editor for free
+const original = {
+  num: 1,
+  date: new Date(),
+  regex: /abc/gi,
+  arr: [1, { nested: 2 }],
+  obj:{a:1,b:2}
+};
+
+const copy = deepClone(original);
+
+function deepClone(obj){
+    if(obj==null || typeof obj!="object")
+    {
+        return obj;
+    }
+
+    if(obj instanceof Date)
+    {
+        return new Date(obj);
+    }
+
+    if(obj instanceof RegExp)
+    {
+        return new RegExp(obj);
+    }
+
+    if(Array.isArray(obj))
+    {
+        return obj.map(item=>deepClone(item))
+    }
+
+    let clone={}
+    for(let key in obj){
+        clone[key]= deepClone(obj[key])
+    }
+    return clone;
+}
+copy.arr[1].nested=3
+console.log(copy);
+
+console.log(original);
+
+
+=============================================
+
+//custom filter
+
+function myFilter(ar,calback){
+    let result=[]
+    for(let i=0;i<ar.length;i++){
+        if(calback(ar[i],i,ar)){
+            result.push(ar[i])
+        }
+    }
+    return result;
+}
+let nums=[1,2,3,4];
+
+let data=myFilter(nums,(num,index,ar)=>num>2);num
+
+console.log(data)
+
+==========================================
+
+let p1 = new Promise((resolve, reject) => setTimeout(() => reject("Error 1"), 100));
+let p2 = new Promise((resolve) => setTimeout(() => resolve("Success 1"), 200));
+let p3 = new Promise((resolve, reject) => setTimeout(() => reject("Error 2"), 200));
+let p4 = new Promise((resolve) => setTimeout(() => resolve("Success 2"), 400));
+
+// Promise.all
+Promise.all([p1, p2, p3, p4])
+  .then(results => console.log("All resolved:", results))
+  .catch(error => console.log("Promise.all error:", error));
+
+// Promise.race
+Promise.race([p1, p2, p3, p4])
+  .then(result => console.log("Race winner:", result))
+  .catch(error => console.log("Promise.race error:", error));
+
+// Promise.any
+Promise.any([p1, p2, p3, p4])
+  .then(result => console.log("Any resolved:", result))
+  .catch(error => console.log("Promise.any error:", error.errors));
+
+// Promise.allSettled
+Promise.allSettled([p1, p2, p3, p4])
+  .then(results => console.log("All Settled:", results));
+
+
+  Promise.all
+Fails immediately if any one rejects.
+→ Output: Promise.all error: Error 1
+
+Promise.race
+Returns whichever settles (resolve/reject) first.
+→ Output: Promise.race error: Error 1
+
+Promise.any
+Returns the first successful resolve, ignores rejections (unless all reject).
+→ Output: Any resolved: Success 1
+
+Promise.allSettled
+Waits for all promises to finish, then gives a report for each.
+→ Output:
+
+All Settled: [
+  { status: 'rejected', reason: 'Error 1' },
+  { status: 'fulfilled', value: 'Success 1' },
+  { status: 'rejected', reason: 'Error 2' },
+  { status: 'fulfilled', value: 'Success 2' }
+]
+
+
+
+all--->once reject then fails all promise
+
+race---->first settled resoleve or reject
+
+any--->first resolve data
+
+settled--->retruns all promise with status weather it is resolve or reject
+
+===================================================
+
+
+async function fsync() {
+  new Promise((resolve, reject) => {
+    console.log(1);
+    console.log(2);
+    resolve();
+  });
+}
+
+console.log(3);
+
+setTimeout(() => {
+  console.log(4);
+}, 0);
+
+new Promise(resolve => console.log(5));
+
+fsync();
+
+console.log(6);
+
+3
+5
+1
+2
+6
+4
+
+
+==========================================
+
+Rate Limter with resdis
+
+async function fixedWindowRateLimiter(req, res, next) {
+  const ip = req.ip;
+  const key = `fw:${ip}`;
+
+  const count = await redis.incr(key);
+
+  if (count === 1) {
+    await redis.expire(key, 60); // expire after 60s
+  }
+
+  if (count > 5) {
+    return res.status(429).json({ error: "Too Many Requests" });
+  }
+
+  next();
+}
+
+rate limter without redis
+
+async function fixedWindowRateLimiter(req, res, next) {
+
+let ip=req.ip;
+
+let requests=new Map();
+
+let now=Date.now();
+
+let acceptableRequests=now-(10*1000);
+
+let reqs=requests.get(ip||[]);
+
+reqs=reqs.filter(ts=>ts>acceptableRequests);
+
+reqs.push(now);
+
+requests.set(ip,reqs);
+
+if(reqs>limit){
+    send the error;
+}
+  next();
+}
+
+================================
+// Build a task queue that:
+// Accepts tasks ({ id, payload }).
+// Executes them in worker threads.
+// Retries failed tasks up to maxRetries.
+// Emits events:
+// task_success when completed
+// task_failed when retries exhausted
+
+let Worker=require("worker_threads");
+let EventEmitter=require("events")
+
+class RunTask extends EventEmitter{
+
+    constructor(workerpath,retries){
+        super();
+        this.retries=retries;
+        this.workerpath=workerpath;
+    }
+
+    this.addTask(id,payload){
+        this.getDataFromWorker(id,payload)
+    }
+
+   function getDataFromWorker(id,payload,attempt=0){
+
+    let worker=new Worker(this.workerpath);
+
+    worker.postMessage(payload);
+
+    worker.on("message",(data)=>{
+        this.emit("task_success",data)
+    })
+
+    worker.on("error",(err)=>{
+        if(attempt>retries){
+             this.emit("task_failed",err)
+        }
+        else{
+            getDataFromWorker(workerpath,attempt+1)
+        }
+    })
+  }
+}
+
+let queue=new RunTask(workerpath,retries=2);
+
+queue.on("task_success",(task,data)=>{
+    console.log();
+});
+
+queue.on("",(task,data)=>{
+    console.log();
+})
+
+queue.addTask({id:1,payload:"run data"})
+
+queue.addTask({id:2,payload:"run data"})
+
+==============================================
+====>callback hell
+
+step(data,(req,res1)=>{
+    step(res1,(req,res2)=>{
+        step(res2,(req,res3)=>{
+            console.log(res3)
+        })
+    })
+})
+
+===>Promsese comes to picture to resolve the call back hell here we can use new promise it has 3 state pending, resolve and reject it can be handled using then and catch like below way.
+
+function test(){
+   new Promise ((resolve,reject)=>{
+        try{
+        resolve("success")
+        }catch(err){
+        reject(err)
+        }
+    })
+}
+
+test().then((res)=>{
+    console.log(res)
+}).catch(err){
+    console.log(err);
+}
+
+===>now after some time async and await comes to picture and it will be more easier to maintain and use
+
+async function data(){
+    try{
+        let result=await test();
+        return result.
+    }catch(err){
+        console.log(err)
+    }
+}
+
+req-1
+req-2
+
+async function parallel() {
+  console.log("Start Parallel");
+  let delays=[1000,1000]
+  const data = await Promise.all(async(delays.map(delay=>{
+    let task1=await delayTask("Task 1", delay),
+    retun task1
+  }))
+  console.log("End Parallel");
+}
+
+  const userIds = [1, 2];
+
+  const data =await userIds.map(async (id) => {
+      // here we need await twice
+      const profile = await getProfile(id);
+      const orders = await getOrders(id);
+
+      return { ...profile, orders };
+    })
+
+===>parallel execution without dependent on one response to another then need to use promise.all+map+await
+
+===>sequential execution wih dependent on one response to another then
+need to use for+await
+
+roup
+
+===========================================================================================
+//read line by and count the words
+sconst readline=require("readline");
+
+function processFile(filePath){
+
+    let {warn,info,errror}=0;
+
+    let fileLineData=readline.interface({
+        input:fs.createReadStream(filepath);
+    })
+    for(const li of line){
+        if(li includes("warn")){
+            warn+=1;
+        }
+           if(li includes("info")){
+            info+=1;
+        }
+           if(li includes("errror")){
+            errror+=1;
+        }
+    }
+
+    return {warn,info,error}
+}
+
+=====================================================
+//file copy using streams
+
+function fileCopy(siurceFilePath,destinationFilePath){
+
+    let readStream=fs.createReadStrem(siurceFilePath);
+
+    let writeStream=fs.createWriteStream(destinationFilePath);
+
+    readStream.pipe(writeStream)
+
+    writeStream.on("finish",()=>{
+        console.log("stream successfully finished")
+    })
+}
+=========================================================
+
+
+ //Merge Two Sorted Lists
+//  Input: list1 = [1,2,4], list2 = [1,3,4]
+//  Output: [1,1,2,3,4,4]
+
+ function listArray(list1, list2) {
+    let mergeData=list1.concat(list2)
+
+    mergeData=mergeData.sort((a,b)=>a-b);
+
+    return mergeData
+};
+console.log(listArray( [1,2,4], [1,3,4]));
+
+==============================================================
+
+Invert Binary Tree
+Input: root = [4,2,7,1,3,6,9] Output: [4,7,2,9,6,3,1];
+
+Input tree (root = [4,2,7,1,3,6,9]):
+
+       4
+     /   \
+    2     7
+   / \   / \
+  1   3 6   9
+
+After inverting:
+
+       4
+     /   \
+    7     2
+   / \   / \
+  9   6 3   1
+
+
+var invertTree = function(root) {
+
+    if (!root) return null;
+
+    let temp=root.left;
+    root.left=root.right;
+    root.right=temp;
+
+    invertTree(root.left);
+    invertTree(root.right);
+
+    return root
+
+};
+
+=====================================
+
+Linked List Cycle
+
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).
+
+let head = [3,2,0,-4]
+let pos = 1
+
+let reverseArray=head.reverse();
+
+let result=false;
+
+let findPosValue=reverseArray[pos];
+
+if(findPosValue!=null && findPosValue!=undefined){
+    result=true;
+}
+
+console.log(result);
+
+==================================================
+
+Implement Queue using Stacks
+
+You must use only standard operations of a stack, which means only push to top, peek/pop from top, size, and is empty operations are valid.
+
+var MyQueue = function() {
+    this.stack=[]
+};
+
+/**
+ * @param {number} x
+ * @return {void}
+ */
+MyQueue.prototype.push = function(x) {
+ return this.stack.push(x);
+};
+
+/**
+ * @return {number}
+ */
+MyQueue.prototype.pop = function() {
+   return this.stack.shift();
+};
+
+/**
+ * @return {number}
+ */
+MyQueue.prototype.peek = function() {
+   return this.stack[0]
+};
+
+/**
+ * @return {boolean}
+ */
+MyQueue.prototype.empty = function() {
+    return this.stack.length=0;
+};
+==========================================================
+First Bad Version
+
+You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
+
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
+
+You are given an API bool isBadVersion(version) which returns whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.
+
+
+let failureVersion=4;
+
+function isFailureVersion(version){
+    return version >=failureVersion;
+}
+
+function getFailureVersion(n){
+    let high=n;
+    let low=1;
+
+    while(low<high){
+         let mid=Math.floor((high+low)/2);
+        if(isFailureVersion(mid)){
+            high=mid;
+        }else{
+            low=mid+1;
+        }
+    }
+    return low
+}
+
+console.log(getFailureVersion(11));
+
+=======================================================
+
+
+Time and space complexity
+
+If input size n = 1,000,000 (1 million items):
+
+O(n) → up to 1,000,000 steps
+
+O(log n) → ~20 steps
+
+O(1) → 1 step
+
+================================================
+ Add Binary
+Given two binary strings a and b, return their sum as a binary string.
+
+Example 1:
+
+Input: a = "11", b = "1"
+Output: "100"
+Example 2:
+
+Input: a = "1010", b = "1011"
+Output: "10101"
+
+let a="11"
+let b="1"
+
+let i=a.length-1;
+let j=b.length-1
+let carry=0;
+let result=[];
+
+while(i>=0||j>=0||carry){
+
+    let sum=carry;
+    if(i>=0) sum+= Number(a[i--]);
+    if (j>=0) sum+=Number(b[j--]);
+
+    result.push(sum%2);
+    carry=Math.floor(sum/2);
+
+}
+result=result.reverse().join("")
+
+console.log(result);
+
+==============================
+Ransom Note
+
+Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+
+Input: ransomNote = "a", magazine = "b"
+Output: false
+
+Input: ransomNote = "aa", magazine = "aab"
+Output: true
+
+var canConstruct = function(ransomNote, magazine) {
+
+    let result=false;
+    for(let i=magazine.length;i>0;i--){
+        let magazineWord=magazine.slice(0,i);
+
+        if(ransomNote==magazineWord){
+            result=true;
+            break;
+        }
+    }
+    return result;
+};
+======================================
+Majority Element
+
+Input: nums = [3,2,3]
+Output: 3
+
+var majorityElement = function (nums) {
+    let value=0
+    nums.reduce((a,b)=>{
+        value=a>b?a:b
+    })
+    return value
+};
+
+==================================
+
+Climbing Stairs
+
+You are climbing a staircase. It takes n steps to reach the top.
+
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+Input: n = 2
+Output: 2
+Explanation: There are two ways to climb to the top.
+1. 1 step + 1 step
+2. 2 steps
+
+var climbStairs = function(n) {
+    let a=1;
+    let b=1
+    for(let i=2;i<=n;i++){
+        let c=a+b;
+        a=b;
+        b=c;
+    }
+    return b;
+};
+
+==========================================
+Middle of the Linked List
+
+Given the head of a singly linked list, return the middle node of the linked list.
+
+If there are two middle nodes, return the second middle node.
+
+Input: head = [1,2,3,4,5]
+Output: [3,4,5]
+Explanation: The middle node of the list is node 3.
+
+
+function getMiddleOfLinkedList(){
+   let head = [1,2,3,4,5,6]
+    let middleValue=Math.floor(head.length/2);
+    let result=head.slice(middleValue,head.length);
+    return result
+}
+
+============================================
+
+//max sum of sub array
+
+let num=[-2,-1,8,-4,2,10]
+
+let max=num[0];
+let currentSum=num[0];
+
+for(let i=1;i<num.length;i++){
+    currentSum=Math.max(num[i],currentSum+num[i]);
+    max=Math.max(max,currentSum);
+}
+
+
+console.log(max);
+===========================
+
+Insert Interval  --->medium question
+
+Example 1:
+
+Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
+Output: [[1,5],[6,9]]
+Example 2:
+
+Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
+Output: [[1,2],[3,10],[12,16]]
+Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
+
+
+ function insert(intervals, newInterval) {
+  let result = [];
+  for (let i = 0; i < intervals.length; i++) {
+    let curr = intervals[i];
+
+    // Case 1: Current interval ends before newInterval starts
+    if (curr[1] < newInterval[0]) {
+      result.push(curr);
+    }
+    // Case 2: Current interval starts after newInterval ends
+    else if (curr[0] > newInterval[1]) {
+      result.push(newInterval);
+      newInterval = curr; // update to keep inserting
+    }
+    // Case 3: Overlap → merge
+    else {
+      newInterval[0] = Math.min(newInterval[0], curr[0]);
+      newInterval[1] = Math.max(newInterval[1], curr[1]);
+    }
+  }
+
+  // push the last interval
+  result.push(newInterval);
+  return result;
+}
+
+=========================================
+Search in Rotated Sorted Array
+
+Example 1:
+
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Example 2:
+
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+Example 3:
+
+Input: nums = [1], target = 0
+Output: -1
+
+var search = function(nums, target) {
+    let targetIndex=nums.findIndex(num=>num==target);
+    return targetIndex;
+};
+================= Combination Sum  Tough recursive example==========================
+
+
+Input: candidates = [2,3,6,7], target = 7
+Output: [[2,2,3],[7]]
+Explanation:
+2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times.
+7 is a candidate, and 7 = 7.
+These are the only two combinations.
+Example 2:
+
+Input: candidates = [2,3,5], target = 8
+Output: [[2,2,2,2],[2,3,3],[3,5]]
+Example 3:
+
+Input: candidates = [2], target = 1
+Output: []
+
+
+
+/**
+ * @param {number[]} candidates
+ * @param {number} target
+ * @return {number[][]}
+ */
+var combinationSum = function(candidates, target) {
+
+    let result=[];
+
+    function backTrace(start,current,total){
+        if(target==total){
+            result.push([...current]);
+            return
+        }
+        if(total>target){
+            return
+        }
+        for(let i=start;i<candidates.length;i++){
+            current.push(candidates[i]);
+            backTrace(i,current,total+candidates[i]);
+            current.pop();
+        }
+    }
+    backTrace(0,[],0);
+    return result;
+};
+
+
+input [1,2,3] --->target 3
+
+[]
+├── [1]
+│   ├── [1,1]
+│   │   ├── [1,1,1] ✅
+│   │   ├── [1,1,2] ❌
+│   │   └── [1,1,3] ❌
+│   ├── [1,2] ✅
+│   └── [1,3] ❌
+├── [2]
+│   ├── [2,2] ❌
+│   └── [2,3] ❌
+└── [3] ✅
+
+
+=========================================
+
+Find All Anagrams in a String
+
+Input: s = "cbaebabacd", p = "abc"
+Output: [0,6]
+Explanation:
+The substring with start index = 0 is "cba", which is an anagram of "abc".
+The substring with start index = 6 is "bac", which is an anagram of "abc".
+
+
+var findAnagrams = function(s, p) {
+    let end=p.length;
+    let result=[];
+    s=s.split("")
+    p=p.split("").sort().join("");
+    for(let i=0;i<s.length;i++){
+      let substring=s.slice(i,i+end);
+      let sortedString=substring.sort();
+        if(sortedString.join("")==p){
+            result.push(i);
+        }
+    }
+  return result;
+};
+
+
+=====================
+17. Letter Combinations of a Phone Number
+
+Example 1:
+
+Input: digits = "23"
+Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+Example 2:
+
+Input: digits = ""
+Output: []
+Example 3:
+
+Input: digits = "2"
+Output: ["a","b","c"]
+
+var letterCombinations = function(digits) {
+    if(!digits) return [];
+        const map = {
+        "2": "abc",
+        "3": "def",
+        "4": "ghi",
+        "5": "jkl",
+        "6": "mno",
+        "7": "pqrs",
+        "8": "tuv",
+        "9": "wxyz"
+    };
+
+    let result=[""];
+    for(let d of digits){
+        let letters=map[d];
+        let newResult=[];
+        for(let prefix of result){
+            for(let ch of letters){
+                newResult.push(prefix+ch)
+            }
+        }
+        result=newResult
+    }
+    return result;
+};
+
+===========================
+416. Partition Equal Subset Sum
+
+Example 1:
+
+Input: nums = [1,5,11,5]
+Output: true
+Explanation: The array can be partitioned as [1, 5, 5] and [11].
+Example 2:
+
+Input: nums = [1,2,3,5]
+Output: false
+Explanation: The array cannot be partitioned into equal sum subsets.
+
+
+var canPartition = function(nums) {
+
+    let total=nums.reduce((acc,sum)=>acc+sum,0);
+
+    if(total%2!=0) return false;
+
+    let target=total/2;
+
+    function defs(index,currentSum){
+
+        if(currentSum==target) return true;
+
+        if(index>=nums.length || currentSum>target) return false;
+
+        if(defs(index+1,currentSum+nums[index]))
+        {
+            return true;
+        }
+        else{
+            return defs(index+1,currentSum);
+        }
+    }
+    return defs(0,0)
+};
+
+============================
+46. Permutations
+
+Example 1:
+
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+Example 2:
+
+Input: nums = [0,1]
+Output: [[0,1],[1,0]]
+Example 3:
+
+Input: nums = [1]
+Output: [[1]]
+
+var permute = function(nums) {
+    let result=[[]];
+    for(let num of nums){
+        let newRes=[];
+        for(let per of result){
+            for(i=0;i<=per.length;i++){
+                let newPerm=per.slice(0,i).concat(num).concat(per.slice(i));
+                newRes.push(newPerm);
+            }
+        }
+        result=newRes;
+    }
+    return result;
+};
+==============================
+
+aeries technology
+
+46. Permutations
+
+Example 1:
+
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+Example 2:
+
+Input: nums = [0,1]
+Output: [[0,1],[1,0]]
+
+let nums=[1,2,3];
+let result=[[]];
+for(let num of nums){
+    let newSubSet=[];
+    for(let subset of result){
+        newSubSet.push([...subset,num]);
+    }
+    result.push(...newSubSet);
+}
+result.splice(0,1);
+console.log(result);
+
+========================
+23. Merge k Sorted Lists------>some tricky is there need to check about linked list
+
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+
+===========it will execute in leetcode compiler=====
+    let values=[];
+
+    for(let list of lists){
+        while(list){
+        values.push(list.val);
+        list=list.next;
+        }
+    }
+    values=values.sort((a,b)=>a-b);
+
+    //create a new linked list;
+    let newList={val:0,next:null};
+    let current=newList;
+    for(let v of values){
+        current.next={val:v,next:null};
+        current=current.next
+    }
+
+    return newList.next;
+
+===============================
+
+    let lists = [
+      [1, 4, 5],
+      [1, 3, 4],
+      [2, 6],
+    ];
+    let values=[];
+
+    for(let list of lists){
+		values=values.concat(list);
+    }
+    values.sort((a,b)=>a-b);
+
+    //create a new linked list;
+    let newList={val:0,next:null};
+    let current=newList;
+    for(let v of values){
+        current.next={val:v,next:null};
+        current=current.next
+    }
+
+console.log(JSON.stringify(newList.next, null, 2));
+
+================================
+2. Add Two Numbers
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list
+
+
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+Example 2:
+
+Input: l1 = [0], l2 = [0]
+Output: [0]
+Example 3:
+
+Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1]
+
+
+let l1 = [2,4,3];
+let l2 = [5,6,4];
+
+l1=l1.reverse().join("");
+l2=l2.reverse().join("");
+
+let sum=parseInt(l1)+parseInt(l2);
+
+let result=sum.toString().split("").reverse().map(num=>parseInt(num));
+
+console.log(result);
+
+==========================================================
+
+Word Pattern
+Given a pattern and a string s, find if s follows the same pattern.
+
+Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s. Specifically:
+Example 1:
+
+Input: pattern = "abba", s = "dog cat cat dog"
+
+Output: true
+
+Explanation:
+
+The bijection can be established as:
+
+'a' maps to "dog".
+'b' maps to "cat".
+
+==solution====
+let map = {};
+let patternArray = pattern.split("");
+s = s.split(" ");
+
+let result = true;
+
+// Check upfront for mismatched lengths
+if (patternArray.length !== s.length) {
+  result = false;
+} else {
+  for (let i = 0; i < patternArray.length; i++) {
+    let patternChar = patternArray[i];
+    let stringWord = s[i];
+    let mapObject = map[patternChar];
+
+    // If pattern char is not mapped yet
+    if (mapObject === undefined) {
+      // If the word is already mapped to another pattern letter → invalid
+      if (Object.values(map).includes(stringWord)) {
+        result = false;
+        break;
+      }
+      // Otherwise, create the mapping
+      map[patternChar] = stringWord;
+    } else {
+      // Already mapped → must match the existing mapping
+      if (mapObject !== stringWord) {
+        result = false;
+        break;
+      }
+    }
+  }
+}
+
+return result;
