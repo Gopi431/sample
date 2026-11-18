@@ -1,0 +1,39 @@
+=======write-vebose explanation=====
+
+1.Runbook with verbose logging turned on (Runbook → Logging and tracing → Log verbose records = On): The message appears in the job's All Logs view.
+
+2.Anyone with job access can read the details. Anyone who can read the job's logs will see everything the script writes there. Microsoft recommends turning this on only while troubleshooting, then turning it off again.
+
+
+========storing azure environment variables====
+
+Azure Automation has no setting for custom environment variables on cloud jobs, so $env:D4IOT_... will be empty there. The values have to come in as parameters instead. They're stored in your Automation account, in one of three places:
+
+On the schedule link: Runbook → Schedules → Link a schedule → Parameters and run settings. You type the three values once, and every scheduled run receives them.
+On a webhook: if the runbook is started by a webhook, the values are saved in the webhook's parameter settings.
+
+
+=====Validate configuration====
+
+Subscription ID: Must be a valid GUID: 8-4-4-4-12 hexadecimal characters, for example 3f2b8c1e-9a4d-4e7b-b2c1-0d9e8f7a6b5c. Uppercase or lowercase is fine.
+
+Storage account name: Must be 3–24 characters, using only lowercase letters and digits. No hyphens, uppercase letters or spaces.
+
+Container name: Must be 3–63 characters, using lowercase letters, digits and hyphens. It must start and end with a letter or digit, and can't contain two hyphens in a row.
+
+
+====ConvertTo-CsvSafeValue explanation====
+
+Line 35, neutralize: If the value starts with one of these characters, the function returns ' followed by the original text. A leading apostrophe tells the spreadsheet "this is text, don't run it".
+Line 37, everything else: The value is returned as text, otherwise unchanged.
+
+
+====regarding feedback point 4 strict validation and sanitization of all dynamic parameterers
+
+1.The field names are fixed. The tostring(properties.x) expressions are literal text. The values returned are output data, not query logic, and point 3 neutralizes them.
+
+2.The real inputs are separate from the query text. The values that change between runs are $SubscriptionId, $StorageAccount, $ContainerName and the API's $skipToken. None of them is ever placed inside the query and serializes the request with @Query with ConvertTo-Json, which escapes values correctly.
+
+
+
+
